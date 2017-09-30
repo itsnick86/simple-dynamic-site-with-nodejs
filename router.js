@@ -1,5 +1,5 @@
 var Profile = require("./profile.js");
-var renderer = require("./renderer.js")
+var renderer = require("./renderer.js");
 
 //Handle HTTP route GET / and POST / i.e. Home
 function home(request, response) {
@@ -7,7 +7,7 @@ function home(request, response) {
   if(request.url === "/") {
     //show search
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/plain');
+    response.setHeader('Content-Type', 'text/html');
     renderer.view("header", {}, response);
     renderer.view("search", {}, response);
     renderer.view("footer", {}, response);
@@ -25,7 +25,7 @@ function user(request, response) {
   var username = request.url.replace("/", "");
   if(username.length > 0) {
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/plain');
+    response.setHeader('Content-Type', 'text/html');
     renderer.view("header", {}, response);
 
     //get json from Treehouse
